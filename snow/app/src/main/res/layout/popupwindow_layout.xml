@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorGray1">
+
+    <LinearLayout
+        android:layout_marginTop="130dp"
+        android:layout_width="250dp"
+        android:background="@color/colorWhite"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_findp"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@color/colorRat21"
+            android:textSize="20sp"
+            android:text="找回密码" />
+
+        <Button
+            android:id="@+id/btn_findn"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@color/colorRat21"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:text="找回登录名" />
+        <Button
+            android:id="@+id/btn_center"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:textSize="20sp"
+            android:background="@color/colorRat21"
+            android:layout_marginTop="15dp"
+            android:text="客服中心"/>
+        <Button
+            android:id="@+id/btn_exit"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:textSize="20sp"
+            android:background="@color/colorRat21"
+            android:layout_marginTop="15dp"
+            android:text="关闭"/>
+    </LinearLayout>
+
+</LinearLayout>
