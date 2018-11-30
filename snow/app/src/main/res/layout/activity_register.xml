@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rel"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_wrong"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/wrong" />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="60dp"
+        android:text="请输入手机号"
+        android:textColor="@color/colorBlack"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/tv_agree1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_phone"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:text="注 册 表 示 你 同 意 " />
+
+    <TextView
+        android:id="@+id/tv_agree2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/tv_agree1"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/tv_agree1"
+        android:text="个 人 信 息 保 护 政 策"
+        android:textColor="@color/colorBlue" />
+
+    <TextView
+        android:id="@+id/tv_agree3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/tv_agree2"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/tv_agree2"
+        android:text="  和" />
+
+    <TextView
+        android:id="@+id/tv_agree4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/tv_agree3"
+        android:layout_marginRight="20dp"
+        android:lines="2"
+        android:text="雪 崩 服 务 使"
+        android:textColor="@color/colorBlue" />
+
+    <TextView
+        android:id="@+id/tv_agree4_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_phone"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="38dp"
+        android:text="用 协 议 "
+        android:textColor="@color/colorBlue" />
+
+    <TextView
+        android:id="@+id/tv_cho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_agree4_2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:text="中国 +86"
+        android:textColor="@color/colorBlack"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/iv_cho"
+        android:layout_width="20dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/tv_cho"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/tv_cho"
+        android:src="@drawable/down" />
+
+    <EditText
+        android:id="@+id/ed_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/iv_cho"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="-10dp"
+        android:layout_toRightOf="@id/iv_cho"
+        android:hint="手机号"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_cho"
+        android:layout_marginBottom="-10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/line" />
+
+    <Button
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/btn_getVerificationCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_cho"
+        android:layout_marginTop="50dp"
+        android:background="@color/colorGray"
+        android:text="获取验证码"
+        android:textColor="@color/colorWhite" />
+
+    <ImageView
+        android:id="@+id/iv_line1"
+        android:layout_width="130dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_getVerificationCode"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="170dp"
+        android:src="@drawable/line" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_getVerificationCode"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="165dp"
+        android:layout_toRightOf="@id/iv_line1"
+        android:gravity="fill"
+        android:text="其 他 注 册 方 式" />
+
+    <ImageView
+        android:id="@+id/iv_line2"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/btn_getVerificationCode"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="170dp"
+        android:src="@drawable/line" />
+
+    <ImageView
+        android:id="@+id/mes_1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/btn_getVerificationCode"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/mes" />
+
+    <TextView
+        android:id="@+id/mes1_1"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/mes_1"
+        android:layout_below="@id/mes_1"
+        android:gravity="center"
+        android:text="短信" />
+
+    <ImageView
+        android:id="@+id/chat_1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@id/mes_1"
+        android:layout_marginRight="53dp"
+        android:layout_toLeftOf="@id/qq_1"
+        android:src="@drawable/chat" />
+
+    <TextView
+        android:id="@+id/chat1_1"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/chat_1"
+        android:layout_below="@id/chat_1"
+        android:gravity="center"
+        android:text="微信" />
+
+    <ImageView
+        android:id="@+id/qq_1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/btn_getVerificationCode"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="200dp"
+        android:src="@drawable/qq" />
+
+    <TextView
+        android:id="@+id/qq1_1"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/qq_1"
+        android:layout_below="@id/qq_1"
+        android:gravity="center"
+        android:text="QQ" />
+
+
+</RelativeLayout>
