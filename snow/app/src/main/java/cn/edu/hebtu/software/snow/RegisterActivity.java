@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -29,20 +30,30 @@ public class RegisterActivity extends AppCompatActivity {
     //获取电话输入框
     private EditText phoneET;
 
-    //获取短信验证码按钮
-    private Button getVerificationCodeBtu;
-    //城市信息编号
-    private TextView countryInformationTV;
     //电话号码
     private String phone;
 
-    private ImageView wrong;
-    private ImageView cho;
+    //获取短信验证码按钮
+    private Button getVerificationCodeBtu;
+
+    //获取验证码
+    private EditText codeET;
+
+    //获取用户名
+    private EditText anotherNameET;
+
+    //获取密码
+    private EditText pwdET;
+
+    //注册按钮
+    private Button registerBtu;
+
+    //协议条款
     private TextView tv2;
     private TextView tv4;
     private TextView tv4_2;
 
-    private RelativeLayout relativeLayout;
+    private LinearLayout linearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,19 +80,15 @@ public class RegisterActivity extends AppCompatActivity {
         /*
         * 绑定
         * */
+        phoneET = findViewById(R.id.et_phone);
         getVerificationCodeBtu = findViewById(R.id.btn_getVerificationCode);
-        wrong = findViewById(R.id.iv_wrong);
-        phoneET = findViewById(R.id.ed_phone);
-        cho = findViewById(R.id.iv_cho);
-        tv2 = findViewById(R.id.tv_agree2);
-        tv4 = findViewById(R.id.tv_agree4);
-        tv4_2 = findViewById(R.id.tv_agree4_2);
-        relativeLayout = findViewById(R.id.rel);
-        countryInformationTV=findViewById(R.id.tv_cho);
+        codeET =findViewById(R.id.et_code);
+        anotherNameET=findViewById(R.id.et_anotherName);
+        pwdET=findViewById(R.id.et_pwd);
+        registerBtu=findViewById(R.id.btn_register);
+        linearLayout = findViewById(R.id.rel);
 
         phoneET.setOnKeyListener(new getFocus());
-        cho.setOnClickListener(new setOnClickListener());
-        wrong.setOnClickListener(new setOnClickListener());
         tv4_2.setOnClickListener(new setOnClickListener());
         tv4.setOnClickListener(new setOnClickListener());
         tv2.setOnClickListener(new setOnClickListener());
@@ -94,27 +101,17 @@ public class RegisterActivity extends AppCompatActivity {
                 case R.id.btn_getVerificationCode:
                     if (v.getContext().toString().length()!=11){
                         //手机号格式不正确，弹出来不正确的消息
+
                     }else{
                         //获得验证码
                         SMSSDK.getVerificationCode("86", phoneET.getText().toString());
                         phone = phoneET.getText().toString();
                     }
                     break;
-                case R.id.iv_cho:
-                    Intent intent = new Intent(RegisterActivity.this,ChoseActivity.class);
-                    startActivityForResult(intent, 1);
-                    break;
-                case R.id.iv_wrong:
-                    finish();
-                    break;
-                case R.id.tv_agree2:
-                    showPopupWindow();
-                    break;
-                case R.id.tv_agree4:
-                    showPopupWindow();
-                    break;
-                case R.id.tv_agree4_2:
-                    showPopupWindow();
+                case R.id.btn_register:
+                    //判断验证码
+                    SMSSDK.submitVerificationCode("86", phone, codeET.getText().toString());
+
             }
         }
     }
@@ -130,28 +127,16 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         popupWindow.setContentView(view);
-        popupWindow.showAtLocation(relativeLayout, Gravity.NO_GRAVITY,0,0);
+        popupWindow.showAtLocation(linearLayout, Gravity.NO_GRAVITY,0,0);
     }
 
-    //ChoseActivity返回城市信息时调用
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
-            case 1:
-                if(resultCode==RESULT_OK){
-                    String countryInformationStr = data.getStringExtra("countryInformation");
-                    countryInformationTV.setText(countryInformationStr);
-                }
-                break;
-            default:
-        }
-    }
 
     public class getFocus implements View.OnKeyListener {
         @Override
         public boolean onKey(View v, int keyCode, KeyEvent event) {
             String username1 = phoneET.getText().toString();
             switch (v.getId()) {
-                case R.id.ed_phone:
+                case R.id.et_phone:
                     if (keyCode == 67) {
                         if ("".equals(username1)) {
                             getVerificationCodeBtu.setBackgroundColor(getResources().getColor(R.color.colorGray));
@@ -184,7 +169,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (result == SMSSDK.RESULT_COMPLETE) {
                 System.out.println("--------result" + event);
                 //短信注册成功后，返回MainActivity,然后提示新好友
-                if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {//提交验证码成功后执行以下步骤
+                if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {//提交验证码成功后执行以下步骤t
                     //Toast.makeText(getApplicationContext(), "提交验证码成功", Toast.LENGTH_SHORT).show();
                     //startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
                 } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
