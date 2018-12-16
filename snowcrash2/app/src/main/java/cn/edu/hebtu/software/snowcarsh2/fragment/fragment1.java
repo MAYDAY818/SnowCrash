@@ -42,7 +42,7 @@ public class fragment1 extends Fragment {
         tabLayout.setTabMode(TabLayout.MODE_FIXED);
         //设置tablayout距离上下左右的距离
         //tab_title.setPadding(20,20,20,20);
-        mFragmentArrays[0] = ChildrenFragment2.newInstance();
+        mFragmentArrays[0] = ChildrenFragment1.newInstance();
         mFragmentArrays[1] = ChildrenFragment2.newInstance();
         mFragmentArrays[2] = ChildrenFragment3.newInstance();
         mFragmentArrays[3] = ChildrenFragment4.newInstance();

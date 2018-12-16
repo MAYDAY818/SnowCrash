@@ -35,11 +35,12 @@ public class fragment4 extends Fragment {
         //LinearLayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         mRecyclerView.setLayoutManager(layoutManager);
         mMyAdapter=new fragment4Adapter(R.layout.fragment4_item,contentList);
-        mRecyclerView.setAdapter(mMyAdapter);
+
         mMyAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
        View view2= LayoutInflater.from(getContext()).inflate(R.layout.fragment4_header,mRecyclerView, false);
 
         mMyAdapter.addHeaderView(view2);
+        mRecyclerView.setAdapter(mMyAdapter);
 
 
 

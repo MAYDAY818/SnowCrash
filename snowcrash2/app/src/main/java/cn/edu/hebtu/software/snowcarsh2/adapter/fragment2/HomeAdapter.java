@@ -4,6 +4,9 @@ package cn.edu.hebtu.software.snowcarsh2.adapter.fragment2;
 
 
 
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 
@@ -24,14 +27,25 @@ public class HomeAdapter extends BaseQuickAdapter<say,BaseViewHolder> {
         helper.setText(R.id.date, item.getDate());
         helper.setText(R.id.content,item.getContent());
 
-        helper.setImageResource(R.id.icon_image, item.getIcon());
-        helper.setImageResource(R.id.img1, item.getA1());
-        helper.setImageResource(R.id.img2, item.getA2());
-        helper.setImageResource(R.id.img3, item.getA3());
+//        helper.setImageResource(R.id.icon_image, item.getIcon());
+//        helper.setImageResource(R.id.img1, item.getA1());
+//        helper.setImageResource(R.id.img2, item.getA2());
+//        helper.setImageResource(R.id.img3, item.getA3());
+
 
 
         // 加载网络图片
         //Glide.with(mContext).load(item.getTitle()).into((ImageView) helper.getView(R.id.img));
+
+        Glide.with(mContext).load(item.getIcon()).into((ImageView) helper.getView(R.id.icon_image));
+
+        Glide.with(mContext).load(item.getA1()).into((ImageView) helper.getView(R.id.img1));
+
+        Glide.with(mContext).load(item.getA2()).into((ImageView) helper.getView(R.id.img2));
+
+        Glide.with(mContext).load(item.getA3()).into((ImageView) helper.getView(R.id.img3));
+
+
 
 
     }
