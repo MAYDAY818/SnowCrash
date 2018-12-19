@@ -27,6 +27,7 @@ import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.zip.Inflater;
 
 import cn.edu.hebtu.software.snowcarsh2.fragment.fragment1;
 import cn.edu.hebtu.software.snowcarsh2.fragment.fragment2;
@@ -46,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
         Toolbar toolbar=(Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         mDrawerLayout=(DrawerLayout)findViewById(R.id.drawer);
@@ -65,6 +64,24 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        //登陆模块嵌入
+
+        View headerLayout = navView.inflateHeaderView(R.layout.nav_header);
+        CircleImageView circleImageView=(CircleImageView)headerLayout.findViewById(R.id.icon_image);
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(MainActivity.this,"登陆喽",Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
+
+
+        //这是峰哥线--------------------------------------------------
 
 
 

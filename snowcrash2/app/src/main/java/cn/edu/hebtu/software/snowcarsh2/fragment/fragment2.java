@@ -31,9 +31,10 @@ public class fragment2 extends Fragment {
         mRecyclerView=view.findViewById(R.id.rev);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
         mMyAdapter=new HomeAdapter(R.layout.fragment2_item,contentList);
-        mRecyclerView.setAdapter(mMyAdapter);
+
         View view2= LayoutInflater.from(getContext()).inflate(R.layout.fragment2_header,mRecyclerView, false);
         mMyAdapter.addHeaderView(view2);
+        mRecyclerView.setAdapter(mMyAdapter);
         return view ;
     }
     public void initContent(){
