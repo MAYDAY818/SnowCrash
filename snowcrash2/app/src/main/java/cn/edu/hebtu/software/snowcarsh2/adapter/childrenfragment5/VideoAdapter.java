@@ -47,7 +47,6 @@ public class VideoAdapter extends BaseAdapter {
             LayoutInflater layoutInflater = LayoutInflater.from(context);
             convertView = layoutInflater.inflate(itemLayout, null);
         }
-
         TextView tvTime = convertView.findViewById(R.id.tv_time);
         tvTime.setText(videoList.get(position).getVideoTime());
         TextView tvMsg = convertView.findViewById(R.id.tv_msg);

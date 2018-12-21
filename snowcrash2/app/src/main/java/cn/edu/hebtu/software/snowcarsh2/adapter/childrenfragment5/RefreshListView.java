@@ -7,7 +7,10 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.AbsListView;
+<<<<<<< HEAD
+=======
 import android.widget.AbsListView.OnScrollListener;
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -18,7 +21,11 @@ import java.util.Date;
 
 import cn.edu.hebtu.software.snowcarsh2.R;
 
+<<<<<<< HEAD
+public class RefreshListView extends ListView implements AbsListView.OnScrollListener {
+=======
 public class RefreshListView extends ListView implements OnScrollListener {
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
     private View headerView;
     private ImageView ivArrow;
     private ProgressBar pb;
@@ -36,6 +43,31 @@ public class RefreshListView extends ListView implements OnScrollListener {
     private RotateAnimation upRA, downRA;
     private boolean isLoading = false;
 
+<<<<<<< HEAD
+    /**
+     * 构造方法1，使用代码new对象时使用
+     * @param context
+     */
+    public RefreshListView(Context context) {
+        super(context);
+        init();
+    }
+
+    /**
+     * 构造方法2，使用布局文件时使用
+     * @param context
+     * @param attrs
+     */
+    public RefreshListView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init();
+    }
+
+    /**
+     * 初始化操作
+     */
+    private void init() {
+=======
     //构造方法1，使用代码new对象时使用
     public RefreshListView(Context context) {
         super(context);
@@ -49,15 +81,24 @@ public class RefreshListView extends ListView implements OnScrollListener {
     }
 
     private void init(Context context){
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
         setOnScrollListener(this);//设置滑动监听
         initHeaderView();
         initRotateAnimation();
         initFooterView();
     }
 
+<<<<<<< HEAD
+    /**
+     * 初始化头布局
+     */
+    private void initHeaderView() {
+        headerView = View.inflate(getContext(),R.layout.childrenfragment3_layout_header, null);
+=======
     //初始化头布局
     private void initHeaderView() {
         headerView = View.inflate(getContext(), R.layout.childrenfragment5_header, null);
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
         //获取控件高度
         headerView.measure(0, 0);
         headerViewHeight = headerView.getMeasuredHeight();
@@ -72,7 +113,13 @@ public class RefreshListView extends ListView implements OnScrollListener {
         addHeaderView(headerView);
     }
 
+<<<<<<< HEAD
+    /**
+     * 旋转动画
+     */
+=======
     //旋转动画
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
     private void initRotateAnimation() {
         upRA = new RotateAnimation(0, -180, Animation.RELATIVE_TO_SELF, 0.5f,
                 Animation.RELATIVE_TO_SELF, 0.5f);
@@ -85,9 +132,17 @@ public class RefreshListView extends ListView implements OnScrollListener {
         downRA.setFillAfter(true);
     }
 
+<<<<<<< HEAD
+    /**
+     * 初始化尾布局
+     */
+    private void initFooterView() {
+        footerView = View.inflate(getContext(), R.layout.childrenfragment3_layout_footer, null);
+=======
     //初始化尾布局
     private void initFooterView() {
         footerView = View.inflate(getContext(), R.layout.childrenfragment5_footer, null);
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
         //获取控件高度
         footerView.measure(0, 0);
         footerViewHeight = footerView.getMeasuredHeight();
@@ -97,7 +152,17 @@ public class RefreshListView extends ListView implements OnScrollListener {
         addFooterView(footerView);
     }
 
+<<<<<<< HEAD
+    /**
+     * 触摸事件，刷新数据，做头布局操作
+     *
+     * @param ev
+     * @return
+     */
+    @Override
+=======
     //触摸事件，刷新数据，做头布局操作
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
     public boolean onTouchEvent(MotionEvent ev) {
         switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -150,7 +215,13 @@ public class RefreshListView extends ListView implements OnScrollListener {
         return super.onTouchEvent(ev);
     }
 
+<<<<<<< HEAD
+    /**
+     * 更新头布局ui的操作
+     */
+=======
     //更新头布局UI的操作
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
     private void refreshHeaderView() {
         switch (currentState) {
             case PULL_REFRESH:
@@ -175,7 +246,13 @@ public class RefreshListView extends ListView implements OnScrollListener {
         }
     }
 
+<<<<<<< HEAD
+    /**
+     * 刷新完成之后，更新ui的方法，改变头布局内容和隐藏头布局
+     */
+=======
     //刷新完成之后，更新ui的方法，改变头布局内容和隐藏头布局
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
     public void completeRefresh() {
         //public是暴露给用户使用的
         ivArrow.setVisibility(VISIBLE);
@@ -186,13 +263,26 @@ public class RefreshListView extends ListView implements OnScrollListener {
         currentState = PULL_REFRESH;
     }
 
+<<<<<<< HEAD
+    /**
+     * 获取当前时间
+     * @return
+     */
+=======
     // 获取当前时间
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
     private String getCurrentTime() {
         SimpleDateFormat format = new SimpleDateFormat("yy-MM-dd HH:mm:ss");
         return format.format(new Date());
     }
 
+<<<<<<< HEAD
+    /**
+     * 暴露刷新的接口
+     */
+=======
     //暴露刷新的接口
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
     private OnRefreshListener refreshListener;
 
     public void setOnRefreshListener(OnRefreshListener refreshListener) {
@@ -203,12 +293,20 @@ public class RefreshListView extends ListView implements OnScrollListener {
         void onRefresh();
     }
 
+<<<<<<< HEAD
+    /**
+     * 滑动事件，加载数据，做尾布局操作
+     * @param view
+     * @param scrollState
+     */
+=======
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
 
     }
 
     //滑动事件，加载数据，做尾布局操作
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         if (scrollState == SCROLL_STATE_IDLE &&
@@ -224,14 +322,31 @@ public class RefreshListView extends ListView implements OnScrollListener {
         }
     }
 
+<<<<<<< HEAD
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+    }
+
+    /**
+     * 加载完成之后，更新ui的方法，隐藏尾布局
+     */
+=======
     //加载完成之后，更新ui的方法，隐藏尾布局
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
     public void completeLoad() {
         //public是暴露给用户使用的
         footerView.setPadding(0, -footerViewHeight, 0, 0);
         isLoading = false;
     }
+<<<<<<< HEAD
+    /**
+     * 暴露加载的接口
+     */
+=======
 
     //暴露加载的接口
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
     private OnLoadListener loadListener;
 
     public void setOnLoadListener(OnLoadListener loadListener) {
@@ -241,5 +356,8 @@ public class RefreshListView extends ListView implements OnScrollListener {
     public interface OnLoadListener {
         void onLoad();
     }
+<<<<<<< HEAD
+=======
 
+>>>>>>> d5b953737bde1aa7e180946021d54a53ed4424ba
 }

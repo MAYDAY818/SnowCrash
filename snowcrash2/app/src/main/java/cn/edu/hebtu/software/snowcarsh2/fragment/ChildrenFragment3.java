@@ -1,5 +1,6 @@
 package cn.edu.hebtu.software.snowcarsh2.fragment;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,6 +22,7 @@ import java.util.zip.Inflater;
 
 
 import cn.edu.hebtu.software.snowcarsh2.R;
+import cn.edu.hebtu.software.snowcarsh2.activity.ChildrenFragment5Activity;
 import cn.edu.hebtu.software.snowcarsh2.adapter.childrenfragment3.CustomerAdapterRead;
 import cn.edu.hebtu.software.snowcarsh2.adapter.childrenfragment3.RefreshListView;
 import cn.edu.hebtu.software.snowcarsh2.bean.DataRead;
@@ -79,7 +81,12 @@ public class ChildrenFragment3 extends Fragment {
         listt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent();
+                intent.setClass(getActivity(),ChildrenFragment5Activity.class);
+                //根据位置查询对应到id，点击的那个视频，获得哪个
+                //传递视频id
+                intent.putExtra("id",id);
+                startActivity(intent);
             }
         });
         return view;

@@ -21,7 +21,9 @@
         </activity>
         <activity android:name=".activity.ChooseActivity" />
         <activity android:name=".activity.WelcomeActivity" />
-        <activity android:name=".activity.ChildrenFragment3Activity"></activity>
+        <activity android:name=".activity.ChildrenFragment5Activity" android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
