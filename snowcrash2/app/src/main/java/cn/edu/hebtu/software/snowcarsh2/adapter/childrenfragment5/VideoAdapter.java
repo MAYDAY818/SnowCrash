@@ -50,7 +50,7 @@ public class VideoAdapter extends BaseAdapter {
 
         TextView tvTime = convertView.findViewById(R.id.tv_time);
         tvTime.setText(videoList.get(position).getVideoTime());
-        TextView tvMsg = convertView.findViewById(R.id.tv_msg);
+        TextView tvMsg = convertView.findViewById(R.id.tv_msg1);
         tvMsg.setText(videoList.get(position).getTvMsg());
         ImageView imgFirst = convertView.findViewById(R.id.iv_pic);
         imgFirst.setImageResource(videoList.get(position).getIvPic());
