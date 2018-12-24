@@ -2,6 +2,8 @@ package cn.edu.hebtu.software.snowcarsh2;
 
 
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTabHost;
@@ -25,10 +27,13 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.zip.Inflater;
 
+import cn.edu.hebtu.software.snowcarsh2.bean.IndexHorizontal;
 import cn.edu.hebtu.software.snowcarsh2.fragment.fragment1;
 import cn.edu.hebtu.software.snowcarsh2.fragment.fragment2;
 import cn.edu.hebtu.software.snowcarsh2.fragment.fragment3;
@@ -293,4 +298,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return  true;
     }
+
+
+
+
+
 }

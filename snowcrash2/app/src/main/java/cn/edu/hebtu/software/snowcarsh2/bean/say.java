@@ -1,26 +1,19 @@
 package cn.edu.hebtu.software.snowcarsh2.bean;
 
 public class say {
-    private int icon;
+    private String icon;
     private String name;
     private String date;
+    private String title;
+    private String img;
     private String Content;
     private int a1,a2,a3;
 
-    public say(int icon, String name, String date, String content, int a1, int a2, int a3) {
-        this.icon = icon;
-        this.name = name;
-        this.date = date;
-        Content = content;
-        this.a1 = a1;
-        this.a2 = a2;
-        this.a3 = a3;
-    }
-    public int getIcon() {
+    public String getIcon() {
         return icon;
     }
 
-    public void setIcon(int icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 
@@ -38,6 +31,22 @@ public class say {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getContent() {
@@ -70,5 +79,35 @@ public class say {
 
     public void setA3(int a3) {
         this.a3 = a3;
+    }
+
+    public say(String icon, String name, String date, String title, String img, String content, int a1, int a2, int a3) {
+        this.icon = icon;
+        this.name = name;
+        this.date = date;
+        this.title = title;
+        this.img = img;
+        Content = content;
+        this.a1 = a1;
+        this.a2 = a2;
+        this.a3 = a3;
+    }
+
+    public say() {
+    }
+
+    @Override
+    public String toString() {
+        return "say{" +
+                "icon='" + icon + '\'' +
+                ", name='" + name + '\'' +
+                ", date='" + date + '\'' +
+                ", title='" + title + '\'' +
+                ", img='" + img + '\'' +
+                ", Content='" + Content + '\'' +
+                ", a1=" + a1 +
+                ", a2=" + a2 +
+                ", a3=" + a3 +
+                '}';
     }
 }

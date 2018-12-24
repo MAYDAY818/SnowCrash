@@ -8,21 +8,19 @@ public class IndexHorizontal {
      * introduce 简介
      * title     标题
      * */
-    private String id;
+    private int id;
     private String title;
     private String introduce;
     private String imgUrl;
+    private String linkUrl;
+    private String time;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public IndexHorizontal() {
-    }
-
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
-
     }
 
     public String getTitle() {
@@ -49,11 +47,43 @@ public class IndexHorizontal {
         this.imgUrl = imgUrl;
     }
 
-    public IndexHorizontal(String id, String title, String introduce, String imgUrl) {
+    public String getLinkUrl() {
+        return linkUrl;
+    }
+
+    public void setLinkUrl(String linkUrl) {
+        this.linkUrl = linkUrl;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public IndexHorizontal(int id, String title, String introduce, String imgUrl, String linkUrl, String time) {
         this.id = id;
         this.title = title;
         this.introduce = introduce;
         this.imgUrl = imgUrl;
+        this.linkUrl = linkUrl;
+        this.time = time;
     }
 
+    public IndexHorizontal() {
+    }
+
+    @Override
+    public String toString() {
+        return "IndexHorizontal{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", introduce='" + introduce + '\'' +
+                ", imgUrl='" + imgUrl + '\'' +
+                ", linkUrl='" + linkUrl + '\'' +
+                ", time='" + time + '\'' +
+                '}';
+    }
 }

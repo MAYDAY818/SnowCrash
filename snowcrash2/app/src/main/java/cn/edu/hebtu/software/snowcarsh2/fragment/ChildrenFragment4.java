@@ -1,13 +1,12 @@
 package cn.edu.hebtu.software.snowcarsh2.fragment;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,23 +15,40 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-import cn.edu.hebtu.software.snowcarsh2.MainActivity;
+
 import cn.edu.hebtu.software.snowcarsh2.R;
 import cn.edu.hebtu.software.snowcarsh2.adapter.childrenfragment4.RadioAdapter;
-import cn.edu.hebtu.software.snowcarsh2.bean.Radio;
+import cn.edu.hebtu.software.snowcarsh2.bean.Radio2;
 
 public class ChildrenFragment4 extends Fragment{
+    private static final int NUMBER = 1;
+    private static final int RESULT = 0;
+    private  RecyclerView recyclerView;
+    private RadioAdapter adapter2;
+    int fromIndex2=0;
     public static Fragment newInstance() {
         ChildrenFragment4 fragment = new ChildrenFragment4();
         return fragment;
 
-    }
 
-    private static final int RESULT = 0;
+    }
+    private  List<Radio2> List1=new ArrayList<>();
     private Handler mainHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -40,9 +56,17 @@ public class ChildrenFragment4 extends Fragment{
             //处理Message,运行在主线程，可以修改界面元素
             switch (msg.what) {
                 case RESULT:
-                    initRadios();
+                    List1.clear();
+                    List1.addAll((List<Radio2>)msg.obj);
                     adapter2.notifyDataSetChanged();
                     swipeRefresh.setRefreshing(false);;
+                    break;
+                case NUMBER:
+                    if(fromIndex2>80){
+                        adapter2.loadMoreEnd();
+                    }
+                    List1.addAll((List<Radio2>)msg.obj);
+                    adapter2.loadMoreComplete();
                     break;
             }
 
@@ -52,25 +76,12 @@ public class ChildrenFragment4 extends Fragment{
 
 
 
-    private DrawerLayout mDrawerLayout;
-    private Radio[] radios={new Radio(R.drawable.r1,"昭和电音",20,20),
-            new Radio(R.drawable.r4,"昭和电音",20,20),
-            new Radio(R.drawable.r5,"昭和电音",20,20),
-            new Radio(R.drawable.r6,"昭和电音",20,20),
-            new Radio(R.drawable.r8,"昭和电音",20,20),
-            new Radio(R.drawable.r10,"昭和电音",20,20),
-            new Radio(R.drawable.r11,"昭和电音",20,20),
-            new Radio(R.drawable.r12,"昭和电音",20,20),
-            new Radio(R.drawable.r13,"昭和电音",20,20),
-            new Radio(R.drawable.r14,"昭和电音",20,20),
-            new Radio(R.drawable.r15,"昭和电音",20,20),
-            new Radio(R.drawable.r16,"昭和电音",20,20)
 
-    };
-    private List<Radio> radioList=new ArrayList<>();
 
-    //    private FruitAdapter adapter;
-    private RadioAdapter adapter2;
+
+
+
+
 
     private SwipeRefreshLayout swipeRefresh;
     private boolean mIsRefreshing=false;
@@ -79,12 +90,14 @@ public class ChildrenFragment4 extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.childrenfragment4,container,false);
-        initRadios();
-        RecyclerView recyclerView=(RecyclerView)view.findViewById(R.id.recycler_view);
+        recyclerView=(RecyclerView)view.findViewById(R.id.recycler_view);
         GridLayoutManager layoutManager=new GridLayoutManager(view.getContext(),2);
         recyclerView.setLayoutManager(layoutManager);
-        adapter2=new RadioAdapter(R.layout.childrenfragment4_item,radioList);
-        recyclerView.setAdapter(adapter2);
+
+        MyAsycTask myAsycTask = new MyAsycTask();
+        myAsycTask.execute("测试数据");
+
+
 
 
         recyclerView.setOnTouchListener(
@@ -104,30 +117,97 @@ public class ChildrenFragment4 extends Fragment{
         swipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                fromIndex2+=20;
                 //refreshFruits();
                 refreshRadios();
+
             }
         });
+
         return view ;
+
     }
 
-    private void initRadios(){
-        radioList.clear();
-        for(int i=0;i<20;i++){
-            Random random=new Random();
-            int index=random.nextInt(radios.length);
-            radioList.add(radios[index]);
+    public static List<Radio2> getRadios(int fromIndex2){
+        List<Radio2> radioList = new ArrayList<>();
+        try {
+            StringBuilder r =new StringBuilder();
+            r.append("http://120.79.80.250:8080/mysqltest4/RadiosServlet?fromIndex=");
+            r.append(fromIndex2+"&count=20");
+
+            URL url = new URL(r.toString());
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("contentType","UTF-8");
+            InputStream is = connection.getInputStream();
+            InputStreamReader inputStreamReader = new InputStreamReader(is);
+            BufferedReader reader = new BufferedReader(inputStreamReader);
+            String res = reader.readLine();
+            JSONArray array = new JSONArray(res);
+            for (int i = 0; i < array.length(); i++){
+                JSONObject object = array.getJSONObject(i);
+                Radio2 n = new Radio2();
+                n.setId(object.getInt("id"));
+                n.setTitle(object.getString("title"));
+                n.setInfo(object.getString("info"));
+                n.setImg(object.getString("img"));
+                n.setDate(object.getString("date"));
+                n.setUri(object.getString("uri"));
+                radioList.add(n);
+
+            }
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
+
+        return radioList;
     }
-    private Handler workHandler;
+
+
+    private class MyAsycTask extends AsyncTask {
+
+        @Override
+        protected Object doInBackground(Object[] objects) {
+
+            List1=getRadios(fromIndex2);
+            return List1;
+        }
+        @Override
+        //在执行doInBackground之后调用
+        protected void onPostExecute(Object o) {
+
+            adapter2=new RadioAdapter(R.layout.childrenfragment4_item,List1);
+            recyclerView.setAdapter(adapter2);
+            adapter2.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+                @Override
+                public void onLoadMoreRequested() {
+                    fromIndex2+=20;
+                    loadMoreRadios();
+                }
+            },recyclerView);
+
+            super.onPostExecute(o);
+        }
+
+
+
+    }
+
     private void refreshRadios(){
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     Thread.sleep(2000);
+                    List<Radio2> list2=getRadios(fromIndex2);
                     Message message = new Message();
-                    message.obj=1;
+                    message.obj=list2;
                     //添加标识
                     message.what = RESULT;
                     mainHandler.sendMessage(message);
@@ -139,7 +219,35 @@ public class ChildrenFragment4 extends Fragment{
 
             }
         }).start();
+
+
     }
+
+    private void loadMoreRadios(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    Thread.sleep(2000);
+                    List<Radio2> list3=getRadios(fromIndex2);
+                    Message message = new Message();
+                    message.obj=list3;
+                    //添加标识
+                    message.what = NUMBER;
+                    mainHandler.sendMessage(message);
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+        }).start();
+
+    }
+
+
 
 
 }

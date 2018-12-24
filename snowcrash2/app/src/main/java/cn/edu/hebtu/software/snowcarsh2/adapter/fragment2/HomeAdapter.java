@@ -14,6 +14,7 @@ import java.util.List;
 
 import cn.edu.hebtu.software.snowcarsh2.R;
 import cn.edu.hebtu.software.snowcarsh2.bean.say;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class HomeAdapter extends BaseQuickAdapter<say,BaseViewHolder> {
@@ -26,6 +27,7 @@ public class HomeAdapter extends BaseQuickAdapter<say,BaseViewHolder> {
         helper.setText(R.id.name, item.getName());
         helper.setText(R.id.date, item.getDate());
         helper.setText(R.id.content,item.getContent());
+        helper.setText(R.id.title,item.getTitle());
 
 //        helper.setImageResource(R.id.icon_image, item.getIcon());
 //        helper.setImageResource(R.id.img1, item.getA1());
@@ -37,13 +39,10 @@ public class HomeAdapter extends BaseQuickAdapter<say,BaseViewHolder> {
         // 加载网络图片
         //Glide.with(mContext).load(item.getTitle()).into((ImageView) helper.getView(R.id.img));
 
-        Glide.with(mContext).load(item.getIcon()).into((ImageView) helper.getView(R.id.icon_image));
+        Glide.with(mContext).load(item.getIcon()).into((CircleImageView) helper.getView(R.id.icon_image));
 
-        Glide.with(mContext).load(item.getA1()).into((ImageView) helper.getView(R.id.img1));
+        Glide.with(mContext).load(item.getImg()).into((ImageView) helper.getView(R.id.img));
 
-        Glide.with(mContext).load(item.getA2()).into((ImageView) helper.getView(R.id.img2));
-
-        Glide.with(mContext).load(item.getA3()).into((ImageView) helper.getView(R.id.img3));
 
 
 

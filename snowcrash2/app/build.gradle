@@ -36,10 +36,15 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+<<<<<<< HEAD
 
     implementation 'com.carson_ho:SearchLayout:1.0.1'
     implementation 'com.ycjiang:VideoPlayModule:1.4.9'
 
     implementation 'com.google.android.exoplayer:extension-okhttp:r2.5.1'
     implementation 'com.google.android.exoplayer:extension-rtmp:r2.5.1'
+=======
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+>>>>>>> dev
 }

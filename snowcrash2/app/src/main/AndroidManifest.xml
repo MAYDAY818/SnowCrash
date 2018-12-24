@@ -12,18 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
+<<<<<<< HEAD
         <activity android:name=".activity.JudgeActivity">
+=======
+        <activity android:name=".activity.startActvity.JudgeActivity">
+>>>>>>> dev
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".activity.ChooseActivity" />
         <activity android:name=".activity.WelcomeActivity" />
         <activity android:name=".activity.ChildrenFragment5Activity" android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait">
         </activity>
+=======
+        <activity android:name=".activity.startActvity.ChooseActivity" />
+        <activity android:name=".activity.startActvity.WelcomeActivity" />
+        <activity android:name=".activity.childrenfragment2.NewsDetailActivity"></activity>
+>>>>>>> dev
     </application>
 
 </manifest>
