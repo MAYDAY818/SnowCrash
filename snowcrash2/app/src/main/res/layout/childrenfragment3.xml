@@ -6,10 +6,11 @@
 
 
     <cn.edu.hebtu.software.snowcarsh2.adapter.childrenfragment3.RefreshListView
+        android:id="@+id/listt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listt">
-    </cn.edu.hebtu.software.snowcarsh2.adapter.childrenfragment3.RefreshListView>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"></cn.edu.hebtu.software.snowcarsh2.adapter.childrenfragment3.RefreshListView>
 
 
 

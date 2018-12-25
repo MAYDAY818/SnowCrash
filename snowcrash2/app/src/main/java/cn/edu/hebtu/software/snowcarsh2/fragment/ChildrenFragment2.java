@@ -38,9 +38,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 import cn.edu.hebtu.software.snowcarsh2.R;
-
 import cn.edu.hebtu.software.snowcarsh2.activity.childrenfragment2.NewsDetailActivity;
 import cn.edu.hebtu.software.snowcarsh2.adapter.childrenfragment2.RecyclerAdapter2;
 import cn.edu.hebtu.software.snowcarsh2.bean.IndexHorizontal;

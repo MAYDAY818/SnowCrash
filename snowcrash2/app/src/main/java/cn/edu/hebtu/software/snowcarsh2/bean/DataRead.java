@@ -2,12 +2,12 @@ package cn.edu.hebtu.software.snowcarsh2.bean;
 
 public class DataRead {
     private String title;
-    private int pic;
+    private String pic;
     private int id;
     private int love;
     private int say;
 
-    public DataRead(String title, int pic, int id, int love, int say) {
+    public DataRead(String title, String pic, int id, int love, int say) {
         this.title = title;
         this.pic = pic;
         this.id = id;
@@ -15,7 +15,7 @@ public class DataRead {
         this.say = say;
     }
 
-    public DataRead(String title, int pic, int love, int say) {
+    public DataRead(String title, String pic, int love, int say) {
         this.title = title;
         this.pic = pic;
         this.love = love;
@@ -30,11 +30,11 @@ public class DataRead {
         this.title = title;
     }
 
-    public int getPic() {
+    public String getPic() {
         return pic;
     }
 
-    public void setPic(int pic) {
+    public void setPic(String pic) {
         this.pic = pic;
     }
 

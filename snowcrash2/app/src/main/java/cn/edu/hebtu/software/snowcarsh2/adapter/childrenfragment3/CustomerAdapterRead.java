@@ -1,12 +1,16 @@
 package cn.edu.hebtu.software.snowcarsh2.adapter.childrenfragment3;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +56,8 @@ public class CustomerAdapterRead extends BaseAdapter {
         TextView tvRead = convertView.findViewById(R.id.tv_read);
         tvRead.setText(reads.get(position).getTitle());
         ImageView ivPic = convertView.findViewById(R.id.iv_pic);
-        ivPic.setImageResource(reads.get(position).getPic());
+//        ivPic.setImageResource(reads.get(position).getPic());
+        Glide.with(context).load(reads.get(position).getPic()).into(ivPic);
         TextView tvLove = convertView.findViewById(R.id.tv_love);
         tvLove.setText(reads.get(position).getLove()+"");
         TextView tvSay = convertView.findViewById(R.id.tv_say);
