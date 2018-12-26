@@ -21,6 +21,8 @@ public class DataRead {
         this.love = love;
         this.say = say;
     }
+    public DataRead() {
+    }
 
     public String getTitle() {
         return title;

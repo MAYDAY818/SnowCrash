@@ -56,7 +56,6 @@ public class CustomerAdapterRead extends BaseAdapter {
         TextView tvRead = convertView.findViewById(R.id.tv_read);
         tvRead.setText(reads.get(position).getTitle());
         ImageView ivPic = convertView.findViewById(R.id.iv_pic);
-//        ivPic.setImageResource(reads.get(position).getPic());
         Glide.with(context).load(reads.get(position).getPic()).into(ivPic);
         TextView tvLove = convertView.findViewById(R.id.tv_love);
         tvLove.setText(reads.get(position).getLove()+"");
